@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- 
+
+  LNSY's BUDGET
+
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUDGET</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://lindseymysse.github.io/local-variable-component/local-variable.js" ></script>
+    <script src="https://lindseymysse.github.io/watch-for-changes/watch-for-changes-component.js" ></script>
+    <script src="https://lindseymysse.github.io/evaluate-text-expression-component/evaluate-expression-component.js" ></script>
+    <script src="https://lindseymysse.github.io/LNSYs-toolbox/helpers.js"></script>
+    <script src="https://lindseymysse.github.io/qr-code-element/qr-code.js"></script>
+    <script src="https://lindseymysse.github.io/peer-component/peer-component.js"></script>
+    <script src="https://lindseymysse.github.io/html-partial/html-partial.js"></script>
+    <script src="https://lindseymysse.github.io/e-y-e/EYE.js"></script>
+
+    <style>
+      label {
+        display: block;
+        clear: both;
+        width: 100%;
+      }
+
+      local-variable {
+        display: inline-block;
+      }
+
+      evaluate-expression{
+        background-color: lightgrey;
+        color: grey;
+      }
+    </style>
+  </head>
+<body>
+
+  <h1>Budget</h1>
+  <h2>Status</h2>
+
+  <h1>LNSY's Budget</h1>
+
+  <p>Current status: <local-variable source="status"></local-variable></p>
+  
+  <h2>Fixed Monthly Costs</h2>
+
+<label>Rent</label>
+<local-variable id="rent"></local-variable>
+<label>Insurance</label>
+<local-variable id="insurance"></local-variable>
+<label>Internet</label>
+<local-variable id="internet"></local-variable>
+<label>Rent</label>
+<local-variable id="phone"></local-variable>
+
+<label>Total</label>
+<evaluate-expression id="monthly-expenses-total-calculation">
+  <local-variable source="rent"></local-variable> + 
+  <local-variable source="insurance"></local-variable> +
+  <local-variable source="internet"></local-variable> +
+  <local-variable source="phone"></local-variable>
+</evaluate-expression> 
+
+
+  <h3>Total: $
+    <local-variable 
+      source="monthly-expenses-total-calculation" 
+      id="monthly-expenses-total">
+    </local-variable>
+  </h3>
+
+
+  <p>This Months Income</p>
+
+<local-variable id="month-name"></local-variable>
+<local-variable id="month-income"></local-variable>
+
+
+  <h3>Month Income: $
+    <local-variable 
+      source="month-income" 
+      id="month-income-total">
+    </local-variable>
+  </h3>
+
+
+  <h2>Totals</h2>
+
+  <evaluate-expression id="status">
+    <local-variable source="month-income"></local-variable> < <local-variable source="monthly-expenses-total-calculation"></local-variable> ? 'FUCKED' : 'A OK'
+  </evaluate-expression>
+
+
+
+</body>
+</html>
