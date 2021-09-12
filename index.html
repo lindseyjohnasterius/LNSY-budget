@@ -39,11 +39,9 @@
   </head>
 <body>
 
-  <h1>Budget</h1>
+  <h1>LNSY Budget</h1>
+  <p>Offered with no warranty or guaranty. LNSY uses it</p>
   <h2>Status</h2>
-
-  <h1>LNSY's Budget</h1>
-
   <p>Current status: <local-variable source="status"></local-variable></p>
   
   <h2>Fixed Monthly Costs</h2>
@@ -54,15 +52,17 @@
 <local-variable id="insurance"></local-variable>
 <label>Internet</label>
 <local-variable id="internet"></local-variable>
-<label>Rent</label>
+<label>Phone</label>
 <local-variable id="phone"></local-variable>
-
+<label>Debt Servicing</label>
+<local-variable id="debt"></local-variable>
 <label>Total</label>
 <evaluate-expression id="monthly-expenses-total-calculation">
   <local-variable source="rent"></local-variable> + 
   <local-variable source="insurance"></local-variable> +
   <local-variable source="internet"></local-variable> +
-  <local-variable source="phone"></local-variable>
+  <local-variable source="phone"></local-variable> + 
+  <local-variable source="debt"></local-variable>
 </evaluate-expression> 
 
 
@@ -72,6 +72,11 @@
       id="monthly-expenses-total">
     </local-variable>
   </h3>
+
+<h3>Other Monthly Expenses</h3>
+  <label>Other Expenses</label>
+<local-variable id="other-expenses"></local-variable>
+
 
 
   <p>This Months Income</p>
@@ -91,7 +96,12 @@
   <h2>Totals</h2>
 
   <evaluate-expression id="status">
-    <local-variable source="month-income"></local-variable> < <local-variable source="monthly-expenses-total-calculation"></local-variable> ? 'FUCKED' : 'A OK'
+    <local-variable source="month-income"></local-variable>
+      < 
+    <local-variable source="monthly-expenses-total-calculation"></local-variable> 
+      + 
+    <local-variable source="other-expenses"></local-variable>
+      ? 'FUCKED' : 'A OK'
   </evaluate-expression>
 
 
