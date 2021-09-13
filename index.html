@@ -23,6 +23,7 @@
     <style>
       
       body {
+        font-family: monospace;
         background-color:black;
         color:white;
       }
@@ -44,15 +45,13 @@
   </head>
 <body>
 
-  <h1>DATAROOM Budget Demo</h1>
-  <p>A simple Month's Budget in pure HTML Markup with DATAROOM Components!</p>
-  <div style="position:absolute;
-              right: 2em;
-              top:2em;
+  <div style="
               border: 1px solid white;
+              padding: 1em;
               ">
-  <h2>Status</h2>
-  <p>Current status: <local-variable source="status"></local-variable></p>
+  <h2>Status:</h2>
+  <h1> <local-variable source="status"></local-variable></h1>
+  <p>Please fill out all form items</p>
   </div>
   
   <h2>Fixed Monthly Costs</h2>
@@ -92,7 +91,6 @@
 
   <p>This Months Income</p>
 
-<local-variable id="month-name"></local-variable>
 <local-variable id="month-income"></local-variable>
 
 
@@ -116,6 +114,8 @@
   </evaluate-expression>
 
 
+<h1>DATAROOM BUDGET</h1>
+<p>A Simple Monthly Budget written in dataroom with just HTML components. <a href="https://github.com/lindseymysse/LNSY-budget/blob/main/index.html" target="_blank">Check out the code here</a></p>
 
 </body>
 </html>
